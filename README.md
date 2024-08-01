@@ -1,5 +1,5 @@
 # PiKVM-webcam
-Simple guide for setting up webcam system on your PiKVM system. Tested on PiKVM V4 Plus.
+Simple guide for setting up webcam system on your PiKVM system. Tested on PiKVM V4 Plus. Useful for setting up BIOS settings on laptops, or completely reinstalling the OS. Keyboard input function of kvmd works even if the HDMI input is not connected.
 
 # Prepare the PiKVM system
 
@@ -66,8 +66,8 @@ SUBSYSTEM=="video4linux", ATTR{index}=="0", ATTR{name}=="Logitech Webcam C925e",
 
 # Camera web access:
 
-- normal quality = `<IP>:8889/cam/`
-- low quality = `<IP>:8889/cam-lq/`
-- high quality = `<IP>:8889/cam-hq/`
+- `<IP>:8889/cam/` = normal quality (1920x1080, 10fps, 6Mbit max, ~3Mbit avg)
+- `<IP>:8889/cam-lq/` = low quality (1280x720, 5fps, 2Mbit max, ~500kbit avg)
+- `<IP>:8889/cam-hq/` = high quality (1920x1080, 20fps, 20Mbit max ~10Mbit avg)
 
-If webcam is disconncted/reconnected after 
+Stream quality switch takes ~20 seconds. Multiple streams are possible only in single quality. If webcam USB is disconncted/reconnected just refreshing the stream page should get it running again.
