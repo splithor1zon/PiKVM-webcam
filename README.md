@@ -1,5 +1,5 @@
 # PiKVM-webcam
-Simple guide for setting up webcam system on your PiKVM system. Tested on PiKVM V4 Plus. Useful for setting up BIOS settings on laptops, or completely reinstalling the OS. Keyboard input function of kvmd works even if the HDMI input is not connected.
+Simple guide for setting up webcam streaming on your PiKVM system. Tested on PiKVM V4 Plus. Useful for setting up BIOS settings on laptops, or completely reinstalling the OS. Keyboard input function of kvmd works even if the HDMI input is not connected.
 
 # Prepare the PiKVM system
 
