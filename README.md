@@ -1,10 +1,12 @@
 # PiKVM-webcam
+
 Simple guide for setting up webcam streaming on your PiKVM system. Tested on PiKVM V4 Plus. Useful for setting up BIOS settings on laptops, or completely reinstalling the OS. Keyboard input function of kvmd works even if the HDMI input is not connected.
 
 # Prepare the PiKVM system
 
-1. `pikvm-update` - update the system
+1. `pikvm-update` - update the system, probably reboot required
 1. `rw` - enable writing to filesystem
+1. `pacman -S ffmpeg` - install ffmpeg
 
 # Download the mediamtx app 
 
