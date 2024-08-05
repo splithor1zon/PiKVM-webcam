@@ -68,8 +68,24 @@ SUBSYSTEM=="video4linux", ATTR{index}=="0", ATTR{name}=="Logitech Webcam C925e",
 
 # Camera web access:
 
+Stream quality switch takes ~20 seconds. Multiple streams are possible only in single quality. If webcam USB is disconncted/reconnected just refreshing the stream page should get it running again.
+
+## Using WebRTC (UDP required)
+
+You can access the stream through a web browser supporting WebRTC, access to UDP is required.
+
 - `<IP>:8889/cam/` = normal quality (1920x1080, 10fps, 6Mbit max, ~3Mbit avg)
 - `<IP>:8889/cam-lq/` = low quality (1280x720, 5fps, 2Mbit max, ~500kbit avg)
 - `<IP>:8889/cam-hq/` = high quality (1920x1080, 20fps, 20Mbit max ~10Mbit avg)
 
-Stream quality switch takes ~20 seconds. Multiple streams are possible only in single quality. If webcam USB is disconncted/reconnected just refreshing the stream page should get it running again.
+## Using RTSP
+
+For TCP only environments you can use RTSP stream through VLC:
+
+- `rtsp://<IP>:8554/cam/` = normal quality (1920x1080, 10fps, 6Mbit max, ~3Mbit avg)
+- `rtsp://<IP>:8554/cam-lq/` = low quality (1280x720, 5fps, 2Mbit max, ~500kbit avg)
+- `rtsp://<IP>:8554/cam-hq/` = high quality (1920x1080, 20fps, 20Mbit max ~10Mbit avg)
+
+Be sure to set up network caching parameter when connecting to the stream according to the latency and stability of your network for lower latency stream.
+
+
