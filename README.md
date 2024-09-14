@@ -2,13 +2,13 @@
 
 Simple guide for setting up webcam streaming on your PiKVM system. Tested on PiKVM V4 Plus. Useful for setting up BIOS settings on laptops, or completely reinstalling the OS. Keyboard input function of kvmd works even if the HDMI input is not connected.
 
-# Prepare the PiKVM system
+## Prepare the PiKVM system
 
 1. `pikvm-update` - update the system, probably reboot required
 1. `rw` - enable writing to filesystem
 1. `pacman -S ffmpeg` - install ffmpeg
 
-# Download the mediamtx app 
+## Download the mediamtx app 
 
 Copy download link for latest release of mediamtx (linux_armv7), you can find the download link here: https://github.com/bluenviron/mediamtx/releases
 
@@ -17,7 +17,7 @@ Copy download link for latest release of mediamtx (linux_armv7), you can find th
 1. `mv mediamtx /usr/local/bin/`
 1. `mv mediamtx.yml /usr/local/etc/`
 
-# Create systemd service
+## Create systemd service
 
 `nano /etc/systemd/system/mediamtx.service`
 
@@ -30,7 +30,7 @@ ExecStart=/usr/local/bin/mediamtx /usr/local/etc/mediamtx.yml
 WantedBy=multi-user.target
 ```
 
-# Edit mediamtx config file:
+## Edit mediamtx config file:
 
 `nano /usr/local/etc/mediamtx.yml`
 
@@ -50,7 +50,7 @@ paths:
   all_others:
 ```
 
-# Create udev rule
+## Create udev rule
 
 This is to mount the webcam consistently to a single /dev mapping point. You can find name and index attributes for your exact webcam using `udevadm info -a -p  $(udevadm info -q path -n /dev/videoX)`, where `/dev/videoX` is current mapping of your webcam.
 
@@ -60,17 +60,17 @@ This is to mount the webcam consistently to a single /dev mapping point. You can
 SUBSYSTEM=="video4linux", ATTR{index}=="0", ATTR{name}=="Logitech Webcam C925e", SYMLINK+="webcam"
 ```
 
-# Enable service and reboot:
+## Enable service and reboot:
 
 1. `sudo systemctl daemon-reload`
 1. `sudo systemctl enable mediamtx`
 1. `reboot`
 
-# Camera web access:
+## Camera web access:
 
 Stream quality switch takes ~20 seconds. Multiple streams are possible only in single quality. If webcam USB is disconncted/reconnected just refreshing the stream page should get it running again.
 
-## Using WebRTC (UDP required)
+### Using WebRTC (UDP required)
 
 You can access the stream through a web browser supporting WebRTC, access to UDP is required.
 
@@ -78,7 +78,7 @@ You can access the stream through a web browser supporting WebRTC, access to UDP
 - `<IP>:8889/cam-lq/` = low quality (1280x720, 5fps, 2Mbit max, ~500kbit avg)
 - `<IP>:8889/cam-hq/` = high quality (1920x1080, 20fps, 20Mbit max ~10Mbit avg)
 
-## Using RTSP
+### Using RTSP
 
 For TCP only environments you can use RTSP stream through VLC:
 
